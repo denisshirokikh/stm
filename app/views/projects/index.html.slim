@@ -1,0 +1,43 @@
+h1 Listing projects
+
+- @projects.each do |project|
+  h1 = project.title
+  p = project.content
+  div
+    b Author:
+    = project.user.email
+  = link_to 'Enter Project', project_path(project), class: "btn btn-default"
+  = link_to 'Edit Project', edit_project_path(project), class: "btn btn-default"
+  = link_to 'Delete Project', project_path(project),
+          method: :delete,
+          data: {confirm: 'Are you sure?' },
+          class: "btn btn-default"
+  div
+
+
+/ table
+/   thead
+/     tr
+/       th Title
+/       th Content
+/       th User
+/       th
+/       th
+/       th
+/
+/   tbody
+/     - @projects.each do |project|
+/       tr
+/         td = project.title
+/         td = project.content
+/         td = project.user_id
+/         td = link_to 'Show', project
+/         td = link_to 'Edit', edit_project_path(project)
+/         td = link_to 'Destroy', project, data: { confirm: 'Are you sure?' }, method: :delete
+/
+/ br
+
+
+
+
+= link_to 'New Project', new_project_path, class: "btn btn-default"
