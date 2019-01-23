@@ -1,4 +1,4 @@
-h1 Listing projects
+h1 Current projects
 
 - @projects.each do |project|
   h1 = project.title
@@ -6,6 +6,11 @@ h1 Listing projects
   div
     b Author:
     = project.user.email
+    p
+    b Team:
+    / = project.team.name
+
+
   = link_to 'Enter Project', project_path(project), class: "btn btn-default"
   = link_to 'Edit Project', edit_project_path(project), class: "btn btn-default"
   = link_to 'Delete Project', project_path(project),
@@ -13,7 +18,7 @@ h1 Listing projects
           data: {confirm: 'Are you sure?' },
           class: "btn btn-default"
   div
-
+  hr
 
 / table
 /   thead
