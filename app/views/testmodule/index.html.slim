@@ -1,0 +1,47 @@
+h1 All Test modules
+
+- @testmodule.each do |testmodule|
+  h1 = testmodule.title
+  p = testmodule.content
+  div
+    b Project:
+    = testmodule.project.title
+    p
+
+
+
+  = link_to 'Enter Test Module', testmodule_path(testmodule), class: "btn btn-default"
+  = link_to 'Edit Test Module', edit_testmodule_path(testmodule), class: "btn btn-default"
+  = link_to 'Delete Test Module', testmodule_path(testmodule),
+          method: :delete,
+          data: {confirm: 'Are you sure?' },
+          class: "btn btn-default"
+  div
+  hr
+
+/ table
+/   thead
+/     tr
+/       th Title
+/       th Content
+/       th User
+/       th
+/       th
+/       th
+/
+/   tbody
+/     - @projects.each do |project|
+/       tr
+/         td = project.title
+/         td = project.content
+/         td = project.user_id
+/         td = link_to 'Show', project
+/         td = link_to 'Edit', edit_project_path(project)
+/         td = link_to 'Destroy', project, data: { confirm: 'Are you sure?' }, method: :delete
+/
+/ br
+
+
+
+
+= link_to 'New Test Module', new_project_testmodule_path, class: "btn btn-default"
