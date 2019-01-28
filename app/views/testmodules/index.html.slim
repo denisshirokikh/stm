@@ -1,6 +1,6 @@
 h1 All Test modules
 
-- @testmodule.each do |testmodule|
+- @testmodules.each do |testmodule|
   h1 = testmodule.title
   p = testmodule.content
   div
@@ -10,9 +10,9 @@ h1 All Test modules
 
 
 
-  = link_to 'Enter Test Module', testmodule_path(testmodule), class: "btn btn-default"
-  = link_to 'Edit Test Module', edit_testmodule_path(testmodule), class: "btn btn-default"
-  = link_to 'Delete Test Module', testmodule_path(testmodule),
+  = link_to 'Enter Test Module', project_testmodules_path, class: "btn btn-default"
+  = link_to 'Edit Test Module', edit_project_testmodule_path(id: testmodule.id), class: "btn btn-default"
+  = link_to 'Delete Test Module',  project_testmodule_path(id: testmodule.id),
           method: :delete,
           data: {confirm: 'Are you sure?' },
           class: "btn btn-default"

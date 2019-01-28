@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   root 'projects#index'
 
   resources :projects do
-    resources :testmodule, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :testmodules
   end
-  #resources :testmodule, only: [:show, :edit, :update, :destroy]}
+  #resources :testmodule [:show, :edit, :update, :destroy]}
 
 end

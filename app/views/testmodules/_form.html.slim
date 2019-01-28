@@ -1,4 +1,4 @@
-= form_for @testmodule, url: new_project_testmodule_path, html: { method: :post }  do |f|
+= form_for [:project, @testmodule]  do |f|
   - if @testmodule.errors.any?
     #error_explanation
       h2 = "#{pluralize(@testmodule.errors.count, "error")} prohibited this project from being saved:"
