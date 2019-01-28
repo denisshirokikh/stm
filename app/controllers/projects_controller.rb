@@ -11,6 +11,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
 
   def show
+    @project = Project.find(params[:id])
+    @testmodules = @project.testmodules
   end
 
   # GET /projects/new

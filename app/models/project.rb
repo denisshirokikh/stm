@@ -1,4 +1,4 @@
 class Project < ApplicationRecord
-  #has_many :test_modules
+  has_many :testmodules
   belongs_to :user
 end

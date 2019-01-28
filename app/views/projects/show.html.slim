@@ -13,3 +13,25 @@ p
 => link_to 'Edit', edit_project_path(@project), class: "btn btn-default"
 
 =< link_to 'Back', projects_path, class: "btn btn-default"
+
+=> link_to 'Create Test Module', new_project_testmodule_path(@project), class: "btn btn-default"
+
+
+- @testmodules.each do |testmodule|
+  h3 = testmodule.title
+  p = testmodule.content
+  div
+    b Project:
+    = testmodule.project.title
+    p
+
+
+
+  = link_to 'Enter Test Module', project_testmodules_path(project_id: @project.id, id: testmodule.id), class: "btn btn-default"
+  = link_to 'Edit Test Module', edit_project_testmodule_path(project_id: @project.id, id: testmodule.id), class: "btn btn-default"
+  = link_to 'Delete Test Module',  project_testmodule_path(project_id: @project.id, id: testmodule.id),
+          method: :delete,
+          data: {confirm: 'Are you sure?' },
+          class: "btn btn-default"
+  div
+  hr
