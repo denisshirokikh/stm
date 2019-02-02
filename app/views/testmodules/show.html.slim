@@ -1,16 +1,17 @@
-h1 Testmodule#show
+.jumbotron
+  h2.display-4
+    = @testmodule.title
+  p
+    b Content:
+    = @testmodule.content
+  p
+    b Project:
+    = @testmodule.project.title
+  p
+    => link_to 'Edit', edit_project_testmodule_path(project_id: @testmodule.project_id, id: @testmodule.id),
+            class: "btn btn-primary btn-lg"
 
+    => link_to 'Back', project_testmodules_path(project_id: @testmodule.project_id),
+            class: "btn btn-primary btn-lg"
 
-p
-  strong Title:
-  = @testmodule.title
-p
-  strong Content:
-  = @testmodule.content
-p
-  strong Project:
-  = @testmodule.project.title
-
-=> link_to 'Edit', edit_project_testmodule_path(project_id: @testmodule.project_id, id: @testmodule.id), class: "btn btn-default"
-
-=< link_to 'Back', project_testmodules_path(project_id: @testmodule.project_id), class: "btn btn-default"
+hr.fat

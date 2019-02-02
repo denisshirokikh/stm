@@ -1,4 +1,11 @@
-h2 Current Test modules
+.jumbotron
+  h2.display-4
+    | Current Test modules for Project:
+    div
+      b
+      = @project.title
+      p
+      = link_to 'New Test Module', new_project_testmodule_path, class: "btn btn-primary btn-lg"
 
 - @testmodules.each do |testmodule|
   h3 = testmodule.title
@@ -10,17 +17,13 @@ h2 Current Test modules
 
 
 
-  = link_to 'Enter Test Module', project_testmodule_path(project_id: testmodule.project_id, id: testmodule.id),
-          class: "btn btn-default"
-  = link_to 'Edit Test Module', edit_project_testmodule_path(id: testmodule.id), class: "btn btn-default"
-  = link_to 'Delete Test Module',  project_testmodule_path(id: testmodule.id),
+  => link_to 'Enter Test Module', project_testmodule_path(project_id: testmodule.project_id, id: testmodule.id),
+          class: "btn btn-primary btn-lg"
+  => link_to 'Edit Test Module', edit_project_testmodule_path(project_id: testmodule.project_id, id: testmodule.id),
+          class: "btn btn-primary btn-lg"
+  => link_to 'Delete Test Module',  project_testmodule_path(project_id: testmodule.project_id, id: testmodule.id),
           method: :delete,
           data: {confirm: 'Are you sure?' },
-          class: "btn btn-default"
+          class: "btn btn-primary btn-lg"
   div
-  hr
-
-
-= link_to 'New Test Module', new_project_testmodule_path, class: "btn btn-default"
-
-hr
+  hr.fat
