@@ -1,2 +1,7 @@
-h1 Testmodule#edit
-p Find me in app/views/testmodule/edit.html.slim
+
+.jumbotron
+  h2.display-4
+    | Edit Test module
+  => link_to 'Back', project_testmodules_path, class: "btn btn-primary btn-lg"
+
+== render 'form'

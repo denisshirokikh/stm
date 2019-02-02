@@ -1,8 +1,15 @@
-h1 Current projects
+.jumbotron
+  h2.display-4
+    | Current projects
+
+  = link_to 'Create New', new_project_path, class: "btn btn-primary btn-lg"
+
 
 - @projects.each do |project|
   h1 = project.title
-  p = project.content
+  p
+    b Content:
+    = project.content
   div
     b Author:
     = project.user.email
@@ -11,38 +18,11 @@ h1 Current projects
     / = project.team.name
 
 
-  = link_to 'Enter Project', project_path(project), class: "btn btn-default"
-  = link_to 'Edit Project', edit_project_path(project), class: "btn btn-default"
-  = link_to 'Delete Project', project_path(project),
+  => link_to 'Enter Project', project_path(project), class: "btn btn-primary btn-lg"
+  => link_to 'Edit Project', edit_project_path(project), class: "btn btn-primary btn-lg"
+  => link_to 'Delete Project', project_path(project),
           method: :delete,
           data: {confirm: 'Are you sure?' },
-          class: "btn btn-default"
+          class: "btn btn-primary btn-lg"
   div
-  hr
-
-/ table
-/   thead
-/     tr
-/       th Title
-/       th Content
-/       th User
-/       th
-/       th
-/       th
-/
-/   tbody
-/     - @projects.each do |project|
-/       tr
-/         td = project.title
-/         td = project.content
-/         td = project.user_id
-/         td = link_to 'Show', project
-/         td = link_to 'Edit', edit_project_path(project)
-/         td = link_to 'Destroy', project, data: { confirm: 'Are you sure?' }, method: :delete
-/
-/ br
-
-
-
-
-= link_to 'New Project', new_project_path, class: "btn btn-default"
+  hr.fat

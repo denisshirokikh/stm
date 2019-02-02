@@ -8,8 +8,12 @@
 
   .field
     = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :content
-    = f.text_area :content
-  .actions = f.submit
+    p
+      = f.text_field :title
+    .field
+      = f.label :content
+    p
+      = f.text_area :content
+
+    .actions
+      = f.submit class: "btn btn-primary btn-lg"

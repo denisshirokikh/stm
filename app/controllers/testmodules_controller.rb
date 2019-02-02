@@ -1,8 +1,9 @@
 class TestmodulesController < ApplicationController
 
   def index
-    @testmodules = Testmodule.all
-  #   @project = Project.find(Testmodule.find(params[:id]).params[:project_id])
+    @project = Project.find(params[:project_id])
+    @testmodules = @project.testmodules
+
    end
 
   def new
@@ -26,11 +27,12 @@ class TestmodulesController < ApplicationController
   end
 
   def update
-    project = Project.find(params[:project_id])
-    @testmodule = project.testmodules.find(params[:id])
+    @testmodule = Testmodule.find(params[:id])
+    # project = Project.find(params[:project_id])
+    # @testmodule = project.testmodules.find(params[:id])
 
     if @testmodule.update(testmodule_params)
-      redirect_to project_testmodule_path(project_id: project.id, id: @testmodule.id), notice: 'Test module was successfully updated.'
+      redirect_to project_testmodule_path(project_id: @testmodule.project_id, id: @testmodule.id), notice: 'Test module was successfully updated.'
     else
       render :edit
     end
@@ -44,7 +46,8 @@ class TestmodulesController < ApplicationController
   end
 
   def show
-    @testmodule = Testmodule.find(params[:id])
+    project = Project.find(params[:project_id])
+    @testmodule = project.testmodules.find(params[:id])
   end
 
   private
