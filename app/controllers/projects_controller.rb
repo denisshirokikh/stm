@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   # GET /projects/1
