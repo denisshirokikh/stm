@@ -2,40 +2,30 @@ p#notice = notice
 
 .jumbotron.jumbotron-fluid
   .container
-    h1.display-4
+    h2.display-4
        = @project.title
     p.lead
+      b Content:
       = @project.content
     p
+      b User:
       = @project.user.email
 
-    = link_to 'Edit', edit_project_path(@project), class: "btn btn-primary btn-lg", role: "button"
+    => link_to 'Edit', edit_project_path(@project), class: "btn btn-primary btn-lg", role: "button"
 
-    = link_to 'Back', projects_path, class: "btn btn-primary btn-lg", role: "button"
+    => link_to 'Back', projects_path, class: "btn btn-primary btn-lg", role: "button"
 
-    = link_to 'Create New Test Module', new_project_testmodule_path(@project), class: "btn btn-primary btn-lg", role: "button"
+    => link_to 'Create New Test Module', new_project_testmodule_path(@project), class: "btn btn-primary btn-lg", role: "button"
 
-p
-  strong Title:
-  = @project.title
-p
-  strong Content:
-  = @project.content
-p
-  strong User:
-  = @project.user.email
-
-=> link_to 'Edit', edit_project_path(@project), class: "btn btn-default"
-
-=> link_to 'Back', projects_path, class: "btn btn-default"
-
-=> link_to 'Create New Test Module', new_project_testmodule_path(@project), class: "btn btn-default"
-
-hr[noshade size='10']
+hr.fat
 
 - @testmodules.each do |testmodule|
-  h5 = testmodule.title
-  p = testmodule.content
+  h5
+    p Module for testing:
+    = testmodule.title
+  p
+    b Description:
+    = testmodule.content
   div
     b Project:
     = testmodule.project.title
@@ -43,11 +33,11 @@ hr[noshade size='10']
 
 
 
-  => link_to 'Enter Test Module', project_testmodule_path(project_id: @project.id, id: testmodule.id), class: "btn btn-default"
-  => link_to 'Edit Test Module', edit_project_testmodule_path(project_id: @project.id, id: testmodule.id), class: "btn btn-default"
+  => link_to 'Enter Test Module', project_testmodule_path(project_id: @project.id, id: testmodule.id), class: "btn btn-primary btn-lg"
+  => link_to 'Edit Test Module', edit_project_testmodule_path(project_id: @project.id, id: testmodule.id), class: "btn btn-primary btn-lg"
   => link_to 'Delete Test Module',  project_testmodule_path(project_id: @project.id, id: testmodule.id),
           method: :delete,
           data: {confirm: 'Are you sure?' },
-          class: "btn btn-default"
+          class: "btn btn-primary btn-lg"
   div
   hr

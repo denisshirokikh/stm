@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :testmodules
+
   end
-  #resources :testmodule [:show, :edit, :update, :destroy]}
 
 end

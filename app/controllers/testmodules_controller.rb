@@ -2,7 +2,6 @@ class TestmodulesController < ApplicationController
 
   def index
     @testmodules = Testmodule.all
-  #   @project = Project.find(Testmodule.find(params[:id]).params[:project_id])
    end
 
   def new
@@ -40,7 +39,7 @@ class TestmodulesController < ApplicationController
     project = Project.find(params[:project_id])
     @testmodule = project.testmodules.find(params[:id])
     @testmodule.destroy
-    redirect_to project_testmodules_path, notice: 'Test module was successfully deleted.'
+    redirect_to project_testmodule_path(project_id: project.id, id: @testmodule.id), notice: 'Test module was successfully deleted.'
   end
 
   def show
