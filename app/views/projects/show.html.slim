@@ -1,5 +1,20 @@
 p#notice = notice
 
+.jumbotron.jumbotron-fluid
+  .container
+    h1.display-4
+       = @project.title
+    p.lead
+      = @project.content
+    p
+      = @project.user.email
+
+    = link_to 'Edit', edit_project_path(@project), class: "btn btn-primary btn-lg", role: "button"
+
+    = link_to 'Back', projects_path, class: "btn btn-primary btn-lg", role: "button"
+
+    = link_to 'Create New Test Module', new_project_testmodule_path(@project), class: "btn btn-primary btn-lg", role: "button"
+
 p
   strong Title:
   = @project.title
