@@ -2,7 +2,8 @@ class TestmodulesController < ApplicationController
 
   def index
     @testmodules = Testmodule.all
-  end
+  #   @project = Project.find(Testmodule.find(params[:id]).params[:project_id])
+   end
 
   def new
     @testmodule = Testmodule.new
