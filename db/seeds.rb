@@ -16,8 +16,13 @@ Testmodule.destroy_all
   25.times do
     project = Project.create(title: Faker::Commerce.product_name, content: Faker::Lorem.sentence, user_id: user.id)
 
-    25.times do
-      Testmodule.create(title: Faker::Commerce.product_name, content: Faker::Lorem.sentence, project_id: project.id)
+    15.times do
+      testmodule = Testmodule.create(title: Faker::Commerce.product_name, content: Faker::Lorem.sentence, project_id: project.id)
+
+      10.times do
+        Testcase.create(title: Faker::Commerce.product_name, body: Faker::Lorem.sentence, testmodule_id: testmodule.id)
+      end
+
     end
 
   end

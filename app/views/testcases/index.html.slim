@@ -1,0 +1,46 @@
+h4 Listing Testcases for:
+h3   Project: #{@project.title}
+   Testmodule: #{@testmodule.title}
+
+table class="table table-bordered table-hover"
+  thead
+    tr
+      th Title
+      th Description
+      / th Testmodule
+      th colspan="3"
+
+  tbody
+    - @testcases.each do |testcase|
+      tr
+        td = testcase.title
+        td = testcase.body
+        / td = testcase.testmodule
+        td => link_to 'Show', project_testmodule_testcase_path(project_id: @testmodule.project_id,
+                                                              testmodule_id: testcase.testmodule_id,
+                                                              id: testcase.id), class: "btn btn-primary btn-sm"
+        td => link_to 'Edit', edit_project_testmodule_testcase_path(project_id: @testmodule.project_id,
+                                                                  testmodule_id: testcase.testmodule_id,
+                                                                  id: testcase.id), class: "btn btn-primary btn-sm"
+        td => link_to 'Delete', project_testmodule_testcase_path(project_id: @testmodule.project_id,
+                                                                testmodule_id: testcase.testmodule_id,
+                                                                id: testcase.id),
+                 data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm"
+
+br
+
+= link_to 'New Testcase', new_project_testmodule_testcase_path, class: "btn btn-primary btn-sm"
+
+nav[aria-label="..."]
+  ul.pagination.pagination-sm
+    li.page-item.active[aria-current="page"]
+      span.page-link
+        |  1
+        span.sr-only
+          | (current)
+    li.page-item
+      a.page-link[href="#"]
+        | 2
+    li.page-item
+      a.page-link[href="#"]
+        | 3

@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @testcase.title
+p
+  strong Body:
+  = @testcase.body
+p
+  / strong Testmodule:
+  / = @testcase.testmodule
+
+=> link_to 'Edit', edit_project_testmodule_testcase_path(@testcase), class: "btn btn-primary btn-sm"
+
+=> link_to 'Back', project_testmodule_testcases_path, class: "btn btn-primary btn-sm"
