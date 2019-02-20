@@ -9,9 +9,56 @@
     = @testmodule.project.title
   p
     => link_to 'Edit', edit_project_testmodule_path(project_id: @testmodule.project_id, id: @testmodule.id),
-            class: "btn btn-primary btn-lg"
+            class: "btn btn-primary btn-lg", role: "button"
 
     => link_to 'Back', project_testmodules_path(project_id: @testmodule.project_id),
-            class: "btn btn-primary btn-lg"
+            class: "btn btn-primary btn-lg", role: "button"
+
+    => link_to 'New Testcase', new_project_testmodule_testcase_path(project_id: @testmodule.project_id,
+                                                                    testmodule_id: @testmodule.id),
+            class: "btn btn-primary btn-lg", role: "button"
 
 hr.fat
+
+h1 Listing testcases
+
+table class="table table-bordered table-hover"
+  thead
+    tr
+      th Title
+      th Description
+      th colspan="3"
+
+  tbody
+    - @testcases.each do |testcase|
+      tr
+        td = testcase.title
+        td = testcase.body
+        td => link_to 'Show', project_testmodule_testcase_path(project_id: @testmodule.project_id,
+                testmodule_id: testcase.testmodule_id,
+                id: testcase.id), class: "btn btn-primary btn-sm"
+        td => link_to 'Edit', edit_project_testmodule_testcase_path(project_id: @testmodule.project_id,
+                testmodule_id: testcase.testmodule_id,
+                id: testcase.id), class: "btn btn-primary btn-sm"
+        td => link_to 'Delete', project_testmodule_testcase_path(project_id: @testmodule.project_id,
+                testmodule_id: testcase.testmodule_id,
+                id: testcase.id),
+                data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm"
+
+br
+
+
+
+nav[aria-label="..."]
+  ul.pagination.pagination-sm
+    li.page-item.active[aria-current="page"]
+      span.page-link
+        |  1
+        span.sr-only
+          | (current)
+    li.page-item
+      a.page-link[href="#"]
+        | 2
+    li.page-item
+      a.page-link[href="#"]
+        | 3

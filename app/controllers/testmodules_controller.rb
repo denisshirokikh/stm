@@ -48,6 +48,8 @@ class TestmodulesController < ApplicationController
   def show
     project = Project.find(params[:project_id])
     @testmodule = project.testmodules.find(params[:id])
+    @testcases = @testmodule.testcases
+    @testcase = Testcase.new
   end
 
   private
