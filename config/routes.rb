@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :testmodules do
+      member do
+        get :copy
+        end
       resources :testcases
     end
 
