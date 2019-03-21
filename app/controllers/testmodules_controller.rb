@@ -21,6 +21,19 @@ class TestmodulesController < ApplicationController
     end
   end
 
+  def copy
+    project = Project.find(params[:project_id])
+    @testmodule = project.testmodules.find(params[:id]).amoeba_dup
+    @testmodule.save
+    
+    if @testmodule.save
+       redirect_to [project, @testmodule], notice: 'New copy of test module was successfully created.'
+    else
+      logger.info @testmodule.errors.messages
+      raise 'Unable to copy object'
+    end
+  end
+
   def edit
     project = Project.find(params[:project_id])
     @testmodule = project.testmodules.find(params[:id])

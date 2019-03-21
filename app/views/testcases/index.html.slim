@@ -8,7 +8,11 @@ table class="table table-bordered table-hover"
       th Title
       th Description
       / th Testmodule
-      th colspan="3"
+      th colspan="3" Actions
+      th Pass
+      th Fail
+      th Blocked
+
 
   tbody
     - @testcases.each do |testcase|
@@ -26,6 +30,13 @@ table class="table table-bordered table-hover"
                                                                 testmodule_id: testcase.testmodule_id,
                                                                 id: testcase.id),
                  data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm"
+        td
+          button.btn.btn-success.btn-sm Pass
+        td
+          button.btn.btn-danger.btn-sm Fail
+        td
+          button.btn.btn-warning.btn-sm Blocked
+
 
 br
 

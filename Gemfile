@@ -70,3 +70,4 @@ gem 'devise'
 
 gem 'pry'
 
+gem 'amoeba'
