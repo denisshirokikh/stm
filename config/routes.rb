@@ -9,7 +9,11 @@ Rails.application.routes.draw do
       member do
         get :copy
         end
-      resources :testcases
+      resources :testcases do
+        member do
+          get :copy
+        end
+      end
     end
 
   end
