@@ -3,6 +3,7 @@ class Testcase < ApplicationRecord
   validates_presence_of :testmodule
   amoeba do
     enable
+    prepend :title => "Copy of "
   end
 
 
