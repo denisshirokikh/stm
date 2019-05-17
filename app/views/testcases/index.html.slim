@@ -9,7 +9,7 @@ table class="table table-bordered table-hover"
       th Description
       / th Testmodule
       th colspan="4" Actions
-      th colspan="3" Status
+      / th colspan="1" Status
       / th Fail
       / th Blocked
 
@@ -33,17 +33,26 @@ table class="table table-bordered table-hover"
                                                               testmodule_id: testcase.testmodule_id,
                                                               id: testcase.id),
                  data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm"
-        td
-          button.btn.btn-success.btn-sm Pass
-        td
-          button.btn.btn-danger.btn-sm Fail
-        td
-          button.btn.btn-warning.btn-sm Blocked
+        / td
+        /   button.btn.btn-success.btn-sm Pass
+        / td
+        /   button.btn.btn-danger.btn-sm Fail
+        / td
+        /   button.btn.btn-warning.btn-sm Blocked
 
-
+        / td
+        /   .dropdown
+        /     button.btn.dropdown-toggle.btn-success.btn-sm Dropdown button
+        /     .dropdown-menu
+        /         .dropdown-item
+        /           | Action
+        /         .dropdown-item
+        /           | Another action
+        /         .dropdown-item
+        /           | Something else here
 br
 
-= link_to 'New Testcase', new_project_testmodule_testcase_path, class: "btn btn-primary btn-sm"
+= link_to 'Add New Testcase', new_project_testmodule_testcase_path, class: "btn btn-primary btn-sm"
 
 nav[aria-label="..."]
   ul.pagination.pagination-sm
