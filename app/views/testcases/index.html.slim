@@ -40,16 +40,21 @@ table class="table table-bordered table-hover"
         / td
         /   button.btn.btn-warning.btn-sm Blocked
 
-        / td
-        /   .dropdown
-        /     button.btn.dropdown-toggle.btn-success.btn-sm Dropdown button
-        /     .dropdown-menu
-        /         .dropdown-item
-        /           | Action
-        /         .dropdown-item
-        /           | Another action
-        /         .dropdown-item
-        /           | Something else here
+        td
+          .btn-group
+            button.btn.btn-default.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
+              | Action
+              span.caret
+            ul.dropdown-menu
+              li
+                a href="#"  Action
+              li
+                a href="#"  Another action
+              li
+                a href="#"  Something else here
+              li.divider role="separator"
+              li
+                a href="#"  Separated link
 br
 
 = link_to 'Add New Testcase', new_project_testmodule_testcase_path, class: "btn btn-primary btn-sm"

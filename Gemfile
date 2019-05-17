@@ -71,3 +71,5 @@ gem 'devise'
 gem 'pry'
 
 gem 'amoeba'
+
+gem 'jquery-rails'
