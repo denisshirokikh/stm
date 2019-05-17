@@ -8,15 +8,20 @@
     b Project:
     = @testmodule.project.title
   p
-    => link_to 'Edit', edit_project_testmodule_path(project_id: @testmodule.project_id, id: @testmodule.id),
+    => link_to 'Edit', edit_project_testmodule_path(project_id: @testmodule.project_id,
+                                                    id: @testmodule.id),
             class: "btn btn-primary btn-lg", role: "button"
 
     => link_to 'Back', project_testmodules_path(project_id: @testmodule.project_id),
             class: "btn btn-primary btn-lg", role: "button"
 
-    => link_to 'New Testcase', new_project_testmodule_testcase_path(project_id: @testmodule.project_id,
-                                                                    testmodule_id: @testmodule.id),
+    => link_to 'Add New Testcase', new_project_testmodule_testcase_path(project_id: @testmodule.project_id,
+                                                    testmodule_id: @testmodule.id),
             class: "btn btn-primary btn-lg", role: "button"
+
+    => link_to 'Run Test Module(Beta)', project_testmodule_path(project_id: @testmodule.project_id,
+                                                    id: @testmodule.id),
+            class: "btn btn-primary btn-lg"
 
 hr.fat
 
@@ -28,7 +33,7 @@ table class="table table-bordered table-hover"
       th Title
       th Description
       th colspan="4" Actions
-      th colspan="3" Status
+      / th colspan="3" Status
 
 
   tbody
@@ -49,13 +54,13 @@ table class="table table-bordered table-hover"
                 testmodule_id: testcase.testmodule_id,
                 id: testcase.id),
                 data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm"
-        td
-          button.btn.btn-success.btn-sm Pass
-          td
-            button.btn.btn-danger.btn-sm Failed
-
-          td
-            button.btn.btn-warning.btn-sm Blocked
+        / td
+        /   button.btn.btn-success.btn-sm Pass
+        /   td
+        /     button.btn.btn-danger.btn-sm Failed
+        /
+        /   td
+        /     button.btn.btn-warning.btn-sm Blocked
 br
 
 
