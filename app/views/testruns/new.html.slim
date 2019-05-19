@@ -1,0 +1,63 @@
+h1 New testrun
+
+= form_for [:project, @testrun] do |f|
+  - if @testrun.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@testrun.errors.count, "error")} prohibited this testrun from being saved:"
+      ul
+        - @testrun.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    br
+    = f.text_field :title, :size => '100x1'
+  .field
+    = f.label :body
+    br
+    = f.text_area :body, :size => '100x2'
+  / .field
+  /   => f.label :completed
+  /
+  /   => f.check_box :completed
+  / .field
+  /   = f.label :project
+  /   = f.text_area :project
+
+
+  h3 Please check testcases which you want to include in testrun
+
+  table class="table table-bordered table-hover"
+      thead
+        tr
+          th Title
+          th Description
+          / th Testmodule
+          th
+            .form-group
+              .col-sm-12.divider
+                br
+                label
+                  input.checkbox.selectAll[type="checkbox" value=""]
+                  | Select All
+
+      tbody
+        - @testcases.each do |testcase|
+          tr
+            td = testcase.title
+            td = testcase.body
+
+            td
+              .form-group
+              .col-sm-12
+                label
+                  input.checkbox[type="checkbox" name="tescase_ids" value="#{testcase.id}"]
+              / .form-check
+              /   input#exampleCheck1.form-check-input[type="checkbox"]
+              /   label.form-check-label[for="exampleCheck1"]
+
+
+  .actions = f.submit class: "btn btn-primary btn-lg"
+
+= link_to 'Back', project_testruns_path, class: "btn btn-primary btn-sm"
+

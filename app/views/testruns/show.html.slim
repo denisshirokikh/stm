@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @testrun.title
+p
+  strong Body:
+  = @testrun.body
+p
+  strong Completed:
+  = @testrun.completed
+p
+  strong Project:
+  = @testrun.project
+
+=> link_to 'Edit', edit_project_testrun_path(@testrun)
+'|
+=< link_to 'Back', project_testruns_path
