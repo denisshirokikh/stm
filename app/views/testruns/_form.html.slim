@@ -19,6 +19,11 @@
 
     => f.check_box :completed
   / .field
+  /   => f.check_box
+  /
+  /   => f.collection_check_boxes :testcase_ids, Testcase.all, :id, :title
+
+  / .field
   /   = f.label :project
   /   = f.text_area :project
   .actions = f.submit class: "btn btn-primary btn-lg"

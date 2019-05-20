@@ -15,9 +15,10 @@ class TestrunsController < ApplicationController
   end
 
   def new
-    @testrun = Testrun.new
+    @testrun = Testrun.new(params[:testrun])
     project = Project.find(params[:project_id])
     @testmodule_id = project.testmodules.ids
+    # @testrun = Testrun.create(params[:testrun])
     @testcases = []
     @testmodule_id.each do |id|
       tc = Testcase.all.where(testmodule_id: id)
@@ -60,6 +61,6 @@ class TestrunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def testrun_params
-      params.require(:testrun).permit(:title, :body, :completed, :project_id)
+      params.require(:testrun).permit(:title, :body, :completed, :project_id, testcase_ids:[])
     end
 end

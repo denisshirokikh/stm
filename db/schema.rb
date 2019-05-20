@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_17_175701) do
+ActiveRecord::Schema.define(version: 2019_05_19_192412) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_05_17_175701) do
     t.integer "testmodule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "testrun_id"
     t.index ["testmodule_id"], name: "index_testcases_on_testmodule_id"
   end
 
