@@ -9,9 +9,8 @@ class TestrunsController < ApplicationController
   def show
     project = Project.find(params[:project_id])
     @testrun = project.testruns.find(params[:id])
-    # @testmodule = project.testmodules.find(params[:id])
-    # @testcases = @testmodule.testcases
-    # @testcase = Testcase.new
+    @testcases = @testrun.testcases
+    @testcase = Testcase.new
   end
 
   def new
@@ -30,6 +29,8 @@ class TestrunsController < ApplicationController
   def edit
     project = Project.find(params[:project_id])
     @testrun = project.testruns.find(params[:id])
+    @testcases = @testrun.testcases
+    @testcase = Testcase.new
   end
 
   def create
@@ -49,7 +50,10 @@ class TestrunsController < ApplicationController
 
 
   def destroy
-
+    project = Project.find(params[:project_id])
+    @testrun = project.testruns.find(params[:id])
+    @testrun.destroy
+    redirect_to project_testrun_path, notice: 'Testrun was successfully deleted.'
 
   end
 
