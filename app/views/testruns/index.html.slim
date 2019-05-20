@@ -1,0 +1,27 @@
+h1 Listing testruns
+
+table
+  thead
+    tr
+      th Title
+      th Body
+      th Completed
+      th Project
+      th
+      th
+      th
+
+  tbody
+    - @testruns.each do |testrun|
+      tr
+        td = testrun.title
+        td = testrun.body
+        td = testrun.completed
+        td = testrun.project.title
+        td = link_to 'Show', project_testrun_path(project_id: testrun.project_id, id: testrun.id)
+        td = link_to 'Edit', edit_project_testrun_path(project_id: testrun.project_id, id: testrun.id)
+        / td = link_to 'Destroy', testrun, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+/ = link_to 'New Testrun', new_testrun_path

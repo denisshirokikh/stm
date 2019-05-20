@@ -1,0 +1,51 @@
+
+.jumbotron
+  h2.display-4
+    | Edit TestRun
+
+
+  = form_for [:project, @testrun] do |f|
+    - if @testrun.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@testrun.errors.count, "error")} prohibited this testrun from being saved:"
+        ul
+          - @testrun.errors.full_messages.each do |message|
+            li = message
+
+    .field
+      = f.label :title
+      br
+      = f.text_field :title, :size => '100x1'
+    .field
+      = f.label :body
+      br
+      = f.text_area :body, :size => '100x2'
+    / .field
+    /   = f.collection_check_boxes :testcase_ids, @testcases, :id, :title
+
+    h1 Listing testcases
+
+    table class="table table-bordered table-hover"
+      thead
+        tr
+          th Title
+          th Description
+          th colspan="4" Actions
+      / th colspan="3" Status
+
+
+      tbody
+        - @testcases.each do |testcase|
+          tr
+            td = testcase.title
+            td = testcase.body
+            td => link_to 'Edit', edit_project_testrun_testcase_path(project_id: @testrun.project_id,
+                    testrun_id: testcase.testrun_id,
+                    id: testcase.id), class: "btn btn-primary btn-sm"
+            td => link_to 'Delete', project_testrun_testcase_path(project_id: @testrun.project_id,
+                    testrun_id: testcase.testrun_id,
+                    id: testcase.id),
+                    data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-primary btn-sm"
+
+    .actions = f.submit class: "btn btn-primary btn-lg"
+    = link_to 'Back', project_testruns_path, class: "btn btn-primary btn-lg"

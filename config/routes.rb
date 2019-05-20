@@ -15,7 +15,10 @@ Rails.application.routes.draw do
         end
       end
     end
-
+    resources :testruns do
+      resources :testcases
+      end
   end
+
 
 end

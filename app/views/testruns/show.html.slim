@@ -1,0 +1,40 @@
+.jumbotron
+  p#notice = notice
+
+  p
+    strong Title:
+    = @testrun.title
+  p
+    strong Body:
+    = @testrun.body
+  / p
+  /   strong Completed:
+  /   = @testrun.completed
+  p
+    strong Project:
+    = @testrun.project.title
+
+  => link_to 'Edit', edit_project_testrun_path(@testrun), class: "btn btn-primary btn-lg", role: "button"
+
+  => link_to 'Back', project_testruns_path, class: "btn btn-primary btn-lg", role: "button"
+
+  => link_to 'Run Test Module(Beta)', project_testrun_path(project_id: @testrun.project_id, id: @testrun.id),
+          class: "btn btn-primary btn-lg"
+
+
+
+h1 Listing testcases
+
+table class="table table-bordered table-hover"
+  thead
+    tr
+      th Title
+      th Description
+      / th colspan="4" Actions
+
+
+  tbody
+    - @testcases.each do |testcase|
+      tr
+        td = testcase.title
+        td = testcase.body
